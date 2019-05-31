@@ -53,27 +53,22 @@ bool Board::isWall(int x, int y) const {
     if(board[y][x].isWall) return true;
     return false;
 }
-bool Board::hasMine(int x, int y) const {
-    if(board[y][x].hasMine) return true;
+bool Board::hasBomb(int x, int y) const {
+    if(board[y][x].hasBomb) return true;
     return false;
 }
 bool Board::isBrick(int x, int y) const {
     if(board[y][x].isBrick) return true;
     return false;
 }
-void Board::setMine(int x, int y) {
-    if(hasMine(x,y)) return;
-    if(isBrick(x,y)) return;
-    if(isWall(x,y)) return;
-    board[y][x].hasMine=true;
-}
+
 void Board::debugdisplay() const {
     for(int line=0; line<height ;++line)
     {
         for(int col=0; col<width ;++col)
         {
             cout<<"[";
-         if(board[line][col].hasMine) cout<<"M";
+         if(board[line][col].hasBomb) cout<<"M";
          else cout<<".";
          if(board[line][col].isWall) cout<<"W";
          else cout<<".";
@@ -85,4 +80,16 @@ void Board::debugdisplay() const {
         }
         cout<<endl;
     }
+}
+void Board::setBomb(int x, int y) {
+        if(hasBomb(x,y)) return;
+        if(isBrick(x,y)) return;
+        if(isWall(x,y)) return;
+        board[y][x].hasBomb=true;
+}
+int Board::getwidth() const {
+    return width;
+}
+int Board::getheight() const {
+    return height;
 }

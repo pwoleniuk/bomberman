@@ -8,7 +8,7 @@
 struct Field{
     bool isWall= false;
     bool isBrick= false;
-    bool hasMine= false;
+    bool hasBomb= false;
     bool isReservated= false;
 };
 class Board {
@@ -18,10 +18,12 @@ int height;
 int countBrick;
 public:
     Board(int width, int height);
-    void setMine(int x, int y);
     bool isWall(int x, int y) const;
     bool isBrick(int x, int y) const;
-    bool hasMine(int x, int y) const;
+    bool hasBomb(int x, int y) const;
+    void setBomb(int x, int y);
+    int getwidth() const;
+    int getheight() const;
     void debugdisplay()const;
 };
 
