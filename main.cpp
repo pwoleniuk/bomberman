@@ -1,6 +1,7 @@
 #include <iostream>
-
+#include "Board.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Board b(11,11);
+    b.debugdisplay();
+
 }
